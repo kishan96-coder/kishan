@@ -1,0 +1,20 @@
+global-css:
+  css:
+    theme:
+      assets/css/materialdesignicons.min.css: {}
+      assets/css/01-grid.css: {}
+      assets/css/02-frk.css: {}
+      assets/css/03-style.css: {}
+      assets/css/03-nav.css: {}
+      assets/css/custom.css: {}
+
+global-js:
+  js:
+    assets/js/custom.js: {}
+   
+  dependencies:
+    - core/jquery
+    # - core/drupal
+    # - core/jquery
+    # - core/jquery.once
+    # - core/drupal.dialog.ajax

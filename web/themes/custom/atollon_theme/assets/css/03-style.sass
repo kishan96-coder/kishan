@@ -1,0 +1,496 @@
+@import variables
+@media (prefers-color-scheme: light)
+	body
+		--bgImage: url(../img/background-light.jpg)
+		--bgImage2: url(../img/background2-light.jpg)
+		--logo: url(../img/logo-black.svg)
+		&.invert, .invert, .invertLight
+			--bgImage: url(../img/background-dark.jpg)
+			--bgImage2: url(../img/background2-dark.jpg)
+			--logo: url(../img/logo-white.svg)
+@media (prefers-color-scheme: dark)
+	body
+		--bgImage: url(../img/background-dark.jpg)
+		--bgImage2: url(../img/background2-dark.jpg)
+		--logo: url(../img/logo-white.svg)
+		&.invert, .invert, .invertDark
+			--bgImage: url(../img/background-light.jpg)
+			--bgImage2: url(../img/background2-light.jpg)
+			--logo: url(../img/logo-black.svg)
+
+
+body, p, span, div
+	color: var(--color-fg3)
+h1, h2, h3, h4
+	color: var(--color-fg1)
+main
+	ul
+		list-style-type: disc
+		padding-left: 1em
+		margin-left: 0em
+	@media #{$L}	
+		h1::before, h2::before
+			content: ""
+			position: relative
+			left: calc(var(--boxPadding) * -1)
+			display: inline-block
+			width: calc(var(--boxPadding) * 0.75)
+			height: 1px
+			margin-right: calc(var(--boxPadding) * -0.75)
+			background-color: var(--color-primary)
+			vertical-align: 0.3em
+	p.subH
+		color: var(--color-fg1)
+		font-weight: 600
+b
+	color: var(--color-primary)
+	font-weight: inherit
+.bgTheme1
+	background-color: var(--color-bg2)
+
+.bgTheme2
+	background-color: var(--color-bg1)
+
+.bgImage
+	background-image: var(--bgImage)
+	background-repeat: no-repeat
+	background-size: cover
+	background-position: center
+.bgImage2
+	background-image: var(--bgImage2)
+	background-repeat: no-repeat
+	background-size: 100%
+	background-position: top
+div.bottom-list
+	>div
+		margin-left: calc(var(--boxPadding) * -0.25)
+		padding-left: calc(var(--boxPadding) * 0.25)
+		padding-right: calc(var(--boxPadding) * 0.25)
+		padding-bottom: calc(var(--boxPadding) * 0.5)
+		border-left: 1px solid var(--color-border)
+		h4
+			margin-top: 0
+		.mdi
+			color: var(--color-primary)
+			font-size: calc(var(--fontSize) * 3)
+		ul>
+			li
+				font-size: calc(var(--fontSize)*0.9)
+				color: var(--color-fg3)
+				font-weight: 500
+.filter
+	-webkit-filter: grayscale(100%)
+	filter: grayscale(100%)
+	transition: $transition
+.logo
+	width: 110px
+	height: 20px
+	background-image: var(--logo)
+	display: inline-block
+.header
+	padding-top: 25vh
+	padding-bottom: 0
+	img
+		margin-bottom: var(--secPadding)
+.sloupce
+		column-gap: var(--colGap)
+
+.price
+	grid-template-rows: max-content auto max-content
+	background-color: var(--color-bg2)
+	padding: calc(var(--boxPadding)/2)
+	transition: $transition
+	grid-row-gap: calc(var(--rowGap) * 0.5)
+	border-top: 1px solid var(--color-primary)
+	&:hover
+		background-color: var(--color-bg3)
+	li
+		font-size: calc(var(--fontSize)*0.9)
+	.odkaz
+		color: var(--color-fg1)
+	h2:before
+		content: none
+	.odkaz, .mdi
+		text-align: center
+		color: var(--color-fg3)
+		font-weight: 600
+		transition: $transition
+	&:hover 
+		.odkaz, .mdi
+			color: var(--color-fg1)
+.config
+	margin-top: calc(var(--rowGap) * -1)
+	display: none
+	border: 1px solid var(--color-bg2)
+	background-color: var(--color-bg1)
+	padding: calc(var(--boxPadding)/2)
+	grid-row-gap: calc(var(--rowGap) * 0.5)
+	h2
+		font-size: 2em
+		margin-bottom: 0.5em
+	h2:before
+		content: none
+	.btn-box
+		text-align: center
+	.btn
+		margin: 20px 10px 0 10px
+.visible + .config
+	display: grid !important
+.range
+	width: 100%
+	height: 2px
+	position: relative
+	top: -8px
+	&::-webkit-slider-runnable-track
+		width: 100%
+		height: 2px
+		cursor: pointer
+		box-shadow: none
+		background: var(--color-bg3)
+		border-radius: 0px
+		border: 0px
+	&::-moz-range-track
+		width: 100%
+		height: 2px
+		cursor: pointer
+		box-shadow: none
+		background: var(--color-bg3)
+		border-radius: 0px
+		border: 0px
+	&::-webkit-slider-thumb
+		box-shadow: none
+		border: 2px solid var(--color-bg3)
+		height: 20px
+		width: 20px
+		border-radius: 20px
+		background: var(--color-bg1)
+		cursor: pointer
+		-webkit-appearance: none
+		margin-top: -9px
+	&::-moz-range-thumb
+		box-shadow: none
+		border: 0px solid #ffffff
+		box-shadow: 0px 10px 10px rgba(0,0,0,0.25)
+		height: 42px
+		width: 22px
+		border-radius: 22px
+		background: rgba(255,255,255,1)
+		cursor: pointer
+		-webkit-appearance: none
+		margin-top: -20px
+.range-value
+	padding-left: 40px
+	color: var(--color-fg1)
+	font-weight: 700
+	font-size: 1.5em
+
+#home1 
+	display: grid
+	min-height: 100vh
+	padding-top: calc(var(--secPadding) + #{$nav-height})
+	padding-bottom: 0
+	>div
+		grid-template-rows: auto max-content
+#home2
+	.container
+		&.table
+			grid-column-gap: 0 !important
+			grid-row-gap: 0 !important
+			border-bottom: 1px solid var(--color-bg3)
+			display: grid
+			align-items: stretch
+			justify-items: stretch
+			padding: 0 0
+			min-width: 100%
+			transition: $transition
+			>div
+				padding: calc(var(--colGap)*0.5)
+				display: flex
+				justify-content: center
+				align-items: center
+			>div:first-child 
+				font-weight: 700
+				color: var(--color-primary)
+			&:hover
+				background-color: var(--color-bg2)
+			&:first-child:hover,
+			&:last-child:hover
+				background-color: transparent
+			&:last-child
+				border-bottom: 0px solid var(--color-bg3)
+			.table-btn
+				text-align: center !important
+			p, h4
+				margin: 0
+			@media #{$M}
+				padding: 0 calc(var(--boxPadding) * 1) !important
+			@media #{$XL}
+				>div:first-child
+					justify-content: left
+					text-align: left
+					padding-left: 0
+				&:first-child,
+				&:last-child
+					>div
+						justify-content: center
+						text-align: center
+						padding: calc(var(--colGap)*0.5)
+				>div.table-strong
+					background-color: var(--color-bg2)
+				&:hover
+					>div.table-strong
+						transition: $transition
+						background-color: var(--color-primary)
+						color: var(--color-gray0)
+						&.table-btn,
+						&.table-h
+							background-color: var(--color-bg2) 
+						p
+							color: var(--color-fg1)
+#home3
+	padding-bottom: 0
+.lide
+	div.container
+		span
+			color: var(--color-gray50)
+			font-weight: 700
+		b
+			color: var(--color-fg1)
+			font-weight: 700
+		img 
+			object-fit: cover
+			width: 100%
+			max-height: 100%
+			border-radius: 100%
+			background-color: transparent
+			transition: $transition
+		@media #{$L}
+			grid-row-gap: calc(var(--rowGap) * 0.5) !important
+			text-align: center
+#home5
+	padding-bottom: 0
+	.home5-box p
+		background-color: var(--color-bg3)
+		padding: calc(var(--boxPadding) * 0.5)
+		font-weight: 500		
+		color: var(--color-fg1)
+	.home5-btn
+		padding: 0
+		text-align: left
+		grid-auto-rows: 1fr
+		grid-column-gap: 0
+		grid-row-gap: 0
+		width: 100%
+		margin-top: var(--secPadding)
+		margin-left: calc(var(--secPadding)*-1)
+		margin-right: calc(var(--secPadding)*-1)
+		min-width: calc(100% + var(--secPadding)*2)
+		a
+			display: flex
+			align-items: center
+			justify-content: left
+			padding: calc(var(--colGap) * 0.7)
+			text-decoration: none
+			align-self: stretch
+			transition: $transition
+			border-top: 1px solid var(--color-bg3)
+			border-right: 1px solid var(--color-bg3)
+			font-weight: 600
+			color: var(--color-fg3)
+			margin: 0
+			&:hover
+				color: var(--color-gray0)
+				background-color: var(--color-primary)
+				z-index: 999
+
+.blog
+	grid-template-rows: max-content auto max-content
+	background-color: var(--color-bg2)
+	padding: calc(var(--boxPadding)/2)
+	transition: $transition
+	font-size: calc(var(--fontSize)*0.9)
+	text-decoration: none
+	span
+		display: inline-block
+		font-weight: 700
+		b
+			color: var(--color-fg1)
+			font-weight: 700
+		&.mdi
+			margin-right: 1em
+			color: var(--color-primary)
+	img.autor
+		width: auto
+		height: calc(var(--lineHeight)*2em)
+		border-radius: 50%
+		margin-bottom: calc(var(--lineHeight)*-0.25)
+		margin-right: calc(var(--lineHeight)*1em)	
+	img.foto
+		object-fit: cover
+		width: calc(100% + var(--boxPadding)*1)
+		aspect-ratio: 16/9
+		vertical-align: middle
+		margin: calc(var(--boxPadding)/2 * -1)
+		margin-bottom: 0
+		transition: $transition
+	.btn
+		margin: 0
+	&:hover
+		background-color: var(--color-bg3)
+		img.foto
+			filter: brightness(110%)
+			transition: $transition
+.blog_item
+	span
+		display: inline-block
+		font-size: 0.9em
+		font-weight: 700
+		margin-bottom: 2em
+		b
+			color: var(--color-fg1)
+			font-weight: 700
+		&.mdi
+			margin-right: 1em
+			color: var(--color-primary)
+	h2
+		&::before
+			content: none
+.inzerce
+	font-size: 1.2em
+img.blog-foto
+	width: 100%
+	margin: 1em 0
+	object-fit: cover
+	aspect-ratio: 16/9
+	vertical-align: middle
+	&.hlavni
+		@media #{$L}
+			width: calc(100% + var(--secPadding)*2)
+			margin: 1em calc(var(--secPadding) * -1)
+#home7
+	.home7-box
+		font-weight: 700
+		background-color: var(--color-bg3)
+		padding: calc(var(--boxPadding)/2)
+		grid-column-gap: calc(var(--colGap)/2)
+		grid-row-gap: calc(var(--rowGap)/2)
+		span
+			color: var(--color-fg1)
+			font-weight: 700
+	.home7-item
+		grid-row-gap: calc(var(--rowGap)/2)
+#home8
+	padding-bottom: 0
+	
+#o_atollonu2
+	h2::before
+		background-color: var(--color-border)
+#blog1
+	input.bigBox
+		width: 100%
+		padding: calc(var(--colGap)*0.5) 0
+		@media #{$XL}
+			padding: calc(var(--colGap)*0.5) var(--secPadding)
+		border: 0
+		border-bottom: 1px solid var(--color-border)
+		background-color: transparent
+		appearance: none
+		transition: $transition
+		color: var(--color-fg1)
+		font-size: var(--fontSize)
+		text-align: left
+		&:focus,
+		&:active
+			border-bottom: 1px solid var(--color-fg1)
+			outline: none
+#blog3
+	table
+		border-collapse: collapse
+		width: 100%
+		table-layout: fixed
+		.mdi
+			color: var(--color-primary)
+		tbody, thead
+			border: 1px solid var(--color-bg2)
+		tr:nth-child(odd)
+			background-color: var(--color-bg1)
+		tr:nth-child(even)
+			background-color: var(--color-bg2)
+		th
+			color: var(--color-fg1)
+		td, th
+			vertical-align: middle
+			text-align: center
+			padding: calc(var(--colGap)*0.5)
+			&:first-child
+				text-align: left
+#contact1
+	padding-bottom: var(--secPadding)
+#contact2
+	padding: 0
+#footer
+	font-size: var(--fontSize)
+	font-weight: 500
+	color: var(--color-gray50) !important 
+	a, .contact>span
+		color: var(--color-fg1)
+		font-size: calc(var(--fontSize)*1.3)
+		text-decoration: none
+		transition: $transition
+	a:hover
+		color: var(--color-primary)
+	h3
+		margin-top: 0
+	.copyright
+		font-size: var(--fontSize)
+		padding-left: var(--fontSize) 
+		@media #{$XL}
+			float: none
+
+#platform1 
+	display: grid
+	padding-bottom: var(--secPadding)
+	>div
+		grid-template-rows: auto max-content
+	.platform-box-small
+		grid-auto-rows: 1fr
+		>div
+			background-color: var(--color-alfa)
+			border: 1px solid var(--color-border)
+			padding: 2em
+			.mdi
+				color: var(--color-primary)
+				font-size: 2em
+			h4
+				margin-top: 1em
+#platform2, #platform6
+	padding-bottom: 0
+	.bottom-list
+		font-size: 0.9em
+	h4
+		color: var(--color-primary)
+.platform-box
+	font-size: 0.9em
+	padding: var(--secPadding)
+	padding-top: 2em
+	background-color: var(--color-bg2)
+	h3>span
+		font-size: 5em
+		color: var(--color-border)
+	h4
+		color: var(--color-primary)	
+
+img.cover 
+	object-fit: cover
+	width: 100%
+	max-height: 100%
+i.mdi.mdi-chevron-left, i.mdi.mdi-chevron-right
+	font-size: 3em
+	color: var(--color-gray50)
+	&:hover
+		color: var(--color-primary)
+.img1
+	background-image: url(../img/img1.jpg) !important
+	background-repeat: no-repeat
+	background-size: cover
+	background-position: center

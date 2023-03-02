@@ -1,0 +1,197 @@
+@import variables
+
+nav *
+	transition: $transition
+	&::after
+		transition: $transition	
+nav
+	display: grid
+	grid-template-columns: 1fr
+	position: fixed
+	z-index: 99
+	background-color: var(--color-bg1)
+	height: $nav-height
+	transition: $transition
+	width: 100%
+	h2, h3, h4
+		font-size: var(--fontSize)
+	.logo-box
+		height: $nav-height
+		display: flex
+		align-items: center
+		margin: 0 40px 0 20px
+		a
+			display: flex
+	.main-nav
+		display: grid
+		grid-template-rows: auto max-content
+		grid-column-start: 1
+		overflow-y: scroll
+		background-color: var(--color-bg1)
+		position: absolute
+		height: 100vh
+		top: 0
+		bottom: 0
+		right: 0
+		left: 100%
+		>ul>li
+			border-bottom: 1px solid var(--color-border)
+			>a
+				line-height: $nav-height
+				font-weight: 500
+			&:hover>a>span
+				color: var(--color-fg1)
+	.sub-menu-lists>li>a
+		padding: 20px
+		h4, span
+			font-size: calc(var(--fontSize)*1)
+			margin-bottom: 0px
+	.ic.menu:focus ~ .main-nav
+		display: grid
+		left: 0
+	.sub-menu-block
+		display: none
+	.mega-menu:focus ~ .sub-menu-block
+		display: grid
+	&.scrolled
+		background-color: var(--color-bg1)
+		height: $nav-height
+	ul 
+		margin: 0
+		li
+			padding: 0
+			margin: 0
+			h2, h3, h2:first-child, h3:first-child
+				margin-top: 1em
+				margin-bottom: 1em
+				color: var(--color-fg3)
+			a
+				display: block
+				color: var(--color-fg1)
+				text-decoration: none
+				&:hover
+					background-color: var(--color-bg2)
+			h2, h3, a
+				padding: 0 20px
+.collapsible
+	cursor: pointer
+.content
+	display: none
+	overflow: hidden
+
+.ic
+	position: fixed
+	cursor: pointer
+	display: flex
+	flex-direction: column
+	top: 0px
+	right: 0px
+	width: $nav-height
+	height: $nav-height
+	text-align: center
+	outline: none
+	align-items: center
+	justify-content: center
+
+	&.close
+		opacity: 0
+
+	&.menu
+		z-index: 20
+
+		.line
+			height: 2px
+			width: 20px
+			display: block
+			background-color: var(--color-fg1)
+			transform: rotate(0deg)
+			transform-origin: center center
+			&:nth-child(1)
+				margin-bottom: 4px
+			&:nth-child(3)
+				margin-top: 4px
+
+		&:focus
+			.line
+
+				&:nth-child(1)
+					-webkit-transform: rotate(45deg)
+					-moz-transform: rotate(45deg)
+					-ms-transform: rotate(45deg)
+					transform: rotate(45deg)
+					margin-top: 4px
+
+				&:nth-child(2)
+					-webkit-transform: rotate(-45deg)
+					-moz-transform: rotate(-45deg)
+					-ms-transform: rotate(-45deg)
+					transform: rotate(-45deg)
+					margin-top: -6px
+
+				&:nth-child(3)
+					visibility: hidden
+					opacity: 0
+
+			outline: none
+
+			~ .ic.close
+				opacity: 1
+				z-index: 21
+				outline: none
+
+		&:hover, &:focus
+			opacity: 1
+
+@media #{$L}
+	nav
+		grid-template-columns: 1fr var(--containerWidth) 1fr
+		.main-nav
+			display: grid
+			grid-template-columns: auto max-content
+			grid-column-start: 2
+			grid-column-end: 4
+			overflow: visible
+			background-color: transparent
+			height: $nav-height
+			left: 0
+			padding: 0
+			margin-left: -20px
+			>ul>li
+				border-bottom: none
+				float: left
+				&::after
+					content: ""
+					height: 1px
+					position: absolute
+					left: 20px
+					right: 20px
+					bottom: 0
+					background-color: transparent
+				&:hover::after
+					background-color: var(--color-primary)
+				>a:hover
+					background-color: transparent
+		.sub-menu-block
+			position: absolute
+			display: none
+			grid-template-columns: repeat(3, minmax(250px, 350px))
+			background-color: var(--color-bg1)
+			border: 1px solid var(--color-border)
+			border-right: 0
+			>div
+				border-right: 1px solid var(--color-border)
+		li.mega-menu:focus ~ .sub-menu-block, .sub-menu-block:hover
+			display: grid
+	.ic
+		display: none
+.li-btn-nav
+	background-color: var(--color-primary)
+	a>span
+		color: var(--color-gray0) !important
+		&:hover
+			color: var(--color-gray0) !important
+	&:hover
+		color: var(--color-gray0) !important
+		background-color: var(--lighten-primary) !important
+	&:hover::after
+		background-color: transparent !important

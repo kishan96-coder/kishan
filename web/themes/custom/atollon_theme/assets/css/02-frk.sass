@@ -1,0 +1,299 @@
+@import variables
+@import ../fonts/proxima-nova.css
+
+\:root
+	--rootSize: #{$rootSize}
+	--fontSize: calc(var(--rootSize)/1)
+	--boxSize: calc(var(--rootSize)*2)
+	--containerWidth: 100%
+	--secPadding: calc(var(--boxSize)*1)
+	--boxPadding: calc(var(--boxSize)*1)
+	--colGap: calc(var(--boxSize)/2)
+	--rowGap: calc(var(--colGap)*1)
+	--sansFont: 'Proxima Nova', sans-serif
+	--sansWeight: 400
+	--lineHeight: 1.5
+	--h1-size: 2em
+	--h1-weight: 700
+	--h1-lineHeight: 1.1
+	--h2-size: 1.5em
+	--h2-weight: 700
+	--h2-lineHeight: 1.3
+	--h3-size: 1.25em
+	--h3-weight: 700
+	--h3-lineHeight: 1.4
+	--h4-size: 1em
+	--h4-weight: 700
+	--h4-lineHeight: 1.5
+	--color-primary: #{$color-primary}
+	--color-secondary: #{$color-secondary}
+	--lighten-primary: #{$lighten-primary}
+	--darken-primary: #{$darken-primary}
+	--color-gray0: #{$color-gray0}
+	--color-gray2: #{$color-gray2}
+	--color-gray4: #{$color-gray4}
+	--color-gray6: #{$color-gray6}
+	--color-gray8: #{$color-gray8}
+	--color-gray10: #{$color-gray10}
+	--color-gray12: #{$color-gray12}
+	--color-gray14: #{$color-gray14}
+	--color-gray16: #{$color-gray16}
+	--color-gray18: #{$color-gray18}
+	--color-gray20: #{$color-gray20}
+	--color-gray30: #{$color-gray30}
+	--color-gray40: #{$color-gray40}
+	--color-gray50: #{$color-gray50}
+	--color-gray60: #{$color-gray60}
+	--color-gray70: #{$color-gray70}
+	--color-gray80: #{$color-gray80}
+	--color-gray82: #{$color-gray82}
+	--color-gray84: #{$color-gray84}
+	--color-gray86: #{$color-gray86}
+	--color-gray88: #{$color-gray88}
+	--color-gray90: #{$color-gray90}
+	--color-gray92: #{$color-gray92}
+	--color-gray94: #{$color-gray94}
+	--color-gray96: #{$color-gray96}
+	--color-gray98: #{$color-gray98}
+	--color-gray100: #{$color-gray100}
+	--color-alfa-black: #{$color-alfa-black}
+	--color-alfa-white: #{$color-alfa-white}
+
+	@media #{$S}
+		--fontSize: calc(var(--rootSize)/1)
+		--boxSize: calc(var(--rootSize)*3)
+		--containerWidth: 100%
+
+	@media #{$M}
+		--fontSize: calc(var(--rootSize)/1)
+		--boxSize: calc(var(--rootSize)*4)
+		--containerWidth: 100%
+
+	@media #{$L}
+		--fontSize: calc(var(--rootSize)/1)
+		--boxSize: calc(var(--rootSize)*5)
+		--containerWidth: calc(#{$mediaValueL} - var(--secPadding)*2)
+
+	@media #{$XL}
+		--fontSize: calc(var(--rootSize)/1)
+		--boxSize: calc(var(--rootSize)*6)
+		--containerWidth: calc(#{$mediaValueXL} - var(--secPadding)*4)
+
+	@media #{$XXL}
+		--fontSize: calc(var(--rootSize)/1)
+		--boxSize: calc(var(--rootSize)*7)
+		--containerWidth: calc(#{$mediaValueXXL} - var(--secPadding)*4)
+
+@media (prefers-color-scheme: light)
+	body
+		--color-bg1: #{$color-gray0}
+		--color-bg2: #{$color-gray4}
+		--color-bg3: #{$color-gray8}
+		--color-fg1: #{$color-gray100}
+		--color-fg2: #{$color-gray80}
+		--color-fg3: #{$color-gray60}
+		--color-alfa: #{$color-alfa-white}
+		--color-border: #{$color-alfa-black}
+		&.invert, .invert, .invertLight
+			--color-bg1: #{$color-gray94}
+			--color-bg2: #{$color-gray90}
+			--color-bg3: #{$color-gray86}
+			--color-fg1: #{$color-gray0}
+			--color-fg2: #{$color-gray20}
+			--color-fg3: #{$color-gray40}
+			--color-alfa: #{$color-alfa-black}
+			--color-border: #{$color-alfa-white}
+
+@media (prefers-color-scheme: dark)
+	body
+		--color-bg1: #{$color-gray94}
+		--color-bg2: #{$color-gray90}
+		--color-bg3: #{$color-gray86}
+		--color-fg1: #{$color-gray0}
+		--color-fg2: #{$color-gray20}
+		--color-fg3: #{$color-gray40}
+		--color-alfa: #{$color-alfa-black}
+		--color-border: #{$color-alfa-white}
+		&.invert, .invert, .invertDark
+			--color-bg1: #{$color-gray0}
+			--color-bg2: #{$color-gray4}
+			--color-bg3: #{$color-gray8}
+			--color-fg1: #{$color-gray100}
+			--color-fg2: #{$color-gray80}
+			--color-fg3: #{$color-gray60}
+			--color-alfa: #{$color-alfa-white}
+			--color-border: #{$color-alfa-black}
+
+*
+	box-sizing: border-box
+	appearance: none
+
+html
+	font-size: var(--fontSize)
+	font-weight: var(--sansWeight)
+	font-family: var(--sansFont)
+	line-height: var(--lineHeight)
+	margin: 0
+	padding: 0
+	
+body
+	-webkit-overflow-scrolling: touch
+	scroll-behavior: smooth
+	overflow-x: hidden
+	margin: 0
+	padding: 0
+	background-color: var(--color-bg1)
+	color: var(--color-fg1)
+	border-color: var(--color-border)
+
+.container
+	grid-column-gap: var(--colGap)
+	grid-row-gap: var(--rowGap)
+	max-width: var(--containerWidth)
+	&.fullWidth
+		max-width: 100%
+		margin: 0
+
+section
+	padding: var(--secPadding)
+
+p
+	margin-top: 0
+	margin-bottom: 1em
+p, h1, h2, h3, h4
+	&:last-child
+		margin-bottom: 0
+
+p, h1, h2, h3, h4
+	&:first-child
+		margin-top: 0
+
+h1, h2, h3, h4 
+	font-family: var(--sansFont)
+	margin-top: 2em
+	margin-bottom: 1em
+
+h1 
+	font-size: var(--h1-size)
+	font-weight: var(--h1-weight)
+	line-height: var(--h1-lineHeight)
+
+h2 
+	font-size: var(--h2-size)
+	font-weight: var(--h2-weight)
+	line-height: var(--h2-lineHeight)
+
+h3
+	font-size: var(--h3-size)
+	font-weight: var(--h3-weight)
+	line-height: var(--h3-lineHeight)
+
+h4
+	font-size: var(--h4-size)
+	font-weight: var(--h4-weight)
+	line-height: var(--h4-lineHeight)
+
+a, i
+	transition: $transition
+	color: var(--color-primary)
+
+ul 
+	list-style-type: none
+	margin-left: 0
+	padding-left: 0
+	>li
+		position: relative
+		margin-bottom: calc(var(--lineHeight)*0.5em)
+hr
+	background-color: var(--color-border)
+	height: 1px
+	margin: calc(var(--lineHeight)*1em) 0
+	border: none
+	
+
+img
+	object-fit: contain
+
+blockquote, q
+	quotes: none
+	& :after, :before
+		content: none
+
+.btn
+	color: var(--color-gray0)
+	background-color: var(--color-primary)
+	padding: calc(var(--fontSize)*0.75) calc(var(--fontSize)*1.5)
+	margin: 1.5em 0
+	border-radius: calc(var(--fontSize)*100)
+	border: 0
+	display: inline-block
+	text-decoration: none
+	font-size: 1em
+	line-height: calc(var(--lineHeight)*1)
+	font-weight: 500
+	transition: $transition
+	&:hover
+		background-color: $lighten-primary
+	&.btn-sec
+		border: 2px solid var(--color-bg3)
+		background-color: transparent
+		color: var(--color-fg3)
+		&:hover
+			background-color: var(--color-bg3)
+
+input[type="checkbox"]
+	appearance: auto
+
+.btn.btn-second
+	background-color: transparent
+	border: 2px solid var(--color-bg3)
+	color: var(--color-fg3)
+	&:hover
+		background-color: var(--color-bg3)
+
+@media #{$XL}
+	.bigBox
+		margin-left: calc(var(--secPadding)*-1)
+		margin-right: calc(var(--secPadding)*-1)
+		min-width: calc(100% + var(--secPadding)*2)
+
+[text="primary"]
+	color: var(--color-primary)
+
+.flex
+	display: flex
+	align-items: baseline
+
+input[type=checkbox]
+	display: none
+	& + label
+		display: block
+		position: relative
+		padding-left: 35px
+		margin-bottom: 20px
+		color: var(--color-fg1)
+		cursor: pointer
+		-webkit-user-select: none
+		-moz-user-select: none
+		-ms-user-select: none
+		&:before
+			content: ''
+			display: block
+			width: 20px
+			height: 20px
+			border: 1px solid var(--color-border)
+			position: absolute
+			left: 0
+			top: 0
+			-webkit-transition: all .12s, border-color .08s
+			transition: all .12s, border-color .08s
+	&:checked + label:before
+		width: 10px
+		top: -5px
+		left: 5px
+		border-radius: 0
+		border: 1px solid var(--color-fg1)
+		border-top-color: transparent
+		border-left-color: transparent
+		-webkit-transform: rotate(45deg)
+		transform: rotate(45deg)

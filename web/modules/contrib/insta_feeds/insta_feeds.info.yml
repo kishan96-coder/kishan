@@ -1,0 +1,12 @@
+name: Instagram User Posts
+type: module
+package: Web services
+description: Provides Instagram user post by his username
+core_version_requirement: ^8.8 || ^9 || ^10
+libraries:  
+  - instgram_feeds/instgram_feeds
+
+# Information added by Drupal.org packaging script on 2022-11-11
+version: '1.0.0'
+project: 'instagram_user'
+datestamp: 1669013207

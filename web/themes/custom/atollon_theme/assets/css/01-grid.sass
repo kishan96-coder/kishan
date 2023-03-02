@@ -1,0 +1,117 @@
+@import variables
+
+$tags: "*"
+$breakpoints: 0 "only screen and (min-width: 0px)", S $S, M $M, L $L, XL $XL, XXL $XXL
+
+.container
+	display: grid
+	grid-template-columns: repeat(auto-fit, 1fr)
+	grid-template-rows: repeat(auto-fit, 1fr)
+	margin-left: auto
+	margin-right: auto
+	width: 100%
+
+@each $name, $breakpoint in $breakpoints
+	@media #{$breakpoint}
+		
+		@for $i from 1 through 12
+			$size-start: $i
+			.container[gc#{$name}="#{$size-start}"]
+				grid-template-columns: repeat($size-start, 1fr)
+			.container[gr#{$name}="#{$size-start}"]
+				grid-template-rows: repeat($size-start, 1fr)
+			.container>
+				@each $tag in $tags
+					#{$tag}[c#{$name}^="#{$size-start}-"], #{$tag}[c#{$name}^="#{$size-start}+"]
+						grid-column-start: $size-start
+					#{$tag}[r#{$name}^="#{$size-start}-"], #{$tag}[r#{$name}^="#{$size-start}+"]
+						grid-row-start: $size-start
+			$count: $i
+			[tc#{$name}="#{$count}"]
+				column-count: $count
+				column-fill: auto
+		[ts#{$name}="all"]
+			column-span: all
+
+		@for $i from 1 through 12
+			$size-end: $i
+			.container>
+				@each $tag in $tags
+					#{$tag}[c#{$name}$="+#{$size-end}"], #{$tag}[c#{$name}="#{$size-end}"]
+						grid-column-end: span $size-end
+					#{$tag}[c#{$name}$="-#{$size-end}"]
+						grid-column-end: $size-end+1
+					#{$tag}[r#{$name}$="+#{$size-end}"], #{$tag}[r#{$name}="#{$size-end}"]
+						grid-row-end: span $size-end
+					#{$tag}[r#{$name}$="-#{$size-end}"]
+						grid-row-end: $size-end+1
+
+		.container>
+			@each $tag in $tags
+				#{$tag}[c#{$name}^=".."]
+					grid-column-start: 1
+				#{$tag}[c#{$name}$=".."]
+					grid-column-end: -1
+				#{$tag}[r#{$name}^=".."]
+					grid-row-start: 1
+				#{$tag}[r#{$name}$=".."]
+					grid-row-end: -1
+
+
+
+[text="center"]
+	text-align: center
+
+[text="left"]
+	text-align: left
+
+[text="right"]
+	text-align: right
+
+[g="left"]
+	justify-items: start
+
+[g="right"]
+	justify-items: end
+
+[g="center"]
+	justify-items: center
+
+[g="width"]
+	justify-items: stretch
+
+[g="top"]
+	align-items: start
+
+[g="bottom"]
+	align-items: end
+
+[g="middle"]
+	align-items: center
+
+[g="height"]
+	align-items: stretch
+
+[c="left"]
+	justify-self: start
+
+[c="right"]
+	justify-self: end
+
+[c="center"]
+	justify-self: center
+
+[c="width"]
+	justify-self: stretch
+
+[c="top"]
+	align-self: start
+
+[c="bottom"]
+	align-self: end
+
+[c="middle"]
+	align-self: center
+
+[c="height"]
+	align-self: stretch

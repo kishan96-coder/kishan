@@ -1,0 +1,15 @@
+insta_feeds:
+  version: VERSION
+  js:
+    js/insta.js: {}
+  css:
+    layout:
+      css/insta.css: {}
+
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/jquery.once
+    - core/drupal.ajax
+    - core/jquery.form
+   
